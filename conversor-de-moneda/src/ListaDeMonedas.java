@@ -1,9 +1,11 @@
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ListaDeMonedas {
 
-    public String nombreYmonedas(String nombre) {
+
+    public Map<String, String> disponibles() {
 
         Map<String, String> nombreYMoneda = new HashMap<>();
 
@@ -16,12 +18,32 @@ public class ListaDeMonedas {
         nombreYMoneda.put("Uruguay", "UYU");
         nombreYMoneda.put("Peru", "PEN");
         nombreYMoneda.put("Ecuador", "USD");
-        nombreYMoneda.put("Euro", "USD");
+        nombreYMoneda.put("Euro", "EUR");
         nombreYMoneda.put("Estados Unidos", "USD");
         nombreYMoneda.put("Japon", "JPY");
         nombreYMoneda.put("China", "CNY");
         nombreYMoneda.put("Mexico", "MXN");
         nombreYMoneda.put("Canada", "CAD");
+
+        return nombreYMoneda;
+    }
+
+
+
+
+    public void listar(){
+
+        Map<String, String> nombreYMoneda = disponibles();
+
+        System.out.println("opciones de cambio");
+        for (Map.Entry<String, String> entry : nombreYMoneda.entrySet()) {
+            System.out.println(entry.getKey());
+        }
+    }
+
+    public String nombreYmonedas(String nombre) {
+
+        Map<String, String> nombreYMoneda = disponibles();
 
         if (nombreYMoneda.containsKey(nombre)) {
             return nombreYMoneda.get(nombre);
@@ -30,6 +52,9 @@ public class ListaDeMonedas {
             return null;
         }
     }
+
+
+
 }
 
 
