@@ -7,24 +7,27 @@ import java.net.http.HttpResponse;
 
 public class conexionApi {
 
-    public modeloMoneda cotizar (String monedaInicial, String monedaDestino, Double cantidad) {
+    public modeloMoneda cotizar(String monedaInicial, String monedaDestino, int cantidad) {
 
         String API = "c3a1ea0f643cce461e34158d";
-        URI direccion =
-                URI.create("https://v6.exchangerate-api.com/v6/" + API + "/par/" + monedaInicial + "/" + monedaDestino + "/" + cantidad);
+        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/" + API + "/pair/" + monedaInicial + "/" + monedaDestino + "/" + cantidad);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(direccion)
                 .build();
 
+        HttpResponse<String> response = null;
         try {
-            HttpResponse<String> response = client
+            response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
-            return new Gson().fromJson(response.body(), modeloMoneda.class);
+        } catch (RuntimeException e) {
+            System.out.println("no corre");
         } catch (Exception e) {
             throw new RuntimeException("Operacion no valida");
         }
-
+        return new Gson().fromJson(response.body(), modeloMoneda.class);
     }
+
+
 }
