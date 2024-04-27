@@ -27,6 +27,7 @@ public class conexionApi {
             throw new RuntimeException("Operacion no valida");
         }
         return new Gson().fromJson(response.body(), modeloMoneda.class);
+
     }
 
     public NombreMoneda lista () {
@@ -50,8 +51,4 @@ public class conexionApi {
         }
         return new Gson().fromJson(response.body(), NombreMoneda.class);
     }
-
-
-
-
 }
