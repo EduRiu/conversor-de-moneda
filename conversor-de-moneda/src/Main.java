@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        var moneda = new BuscarMoneda();
         var lista = new ListaDeMonedas();
         conexionApi conexion = new conexionApi();
 
@@ -12,7 +13,7 @@ public class Main {
         System.out.println("ingrese cantidad");
         int cantidad = leer.nextInt();
 
-       lista.listar();
+        lista.listar();
 
         System.out.println("de que pais es la moneda?");
         String inicial = lista.nombreYmonedas(leer.next());
@@ -22,8 +23,11 @@ public class Main {
 
         modeloMoneda resultado = conexion.cotizar(inicial, destino, cantidad);
 
+        NombreMoneda tipo = conexion.lista();
+        String monedaIncial = moneda.buscarNombreMoneda(tipo, inicial);
+        String monedaFinal = moneda.buscarNombreMoneda(tipo, destino);
 
-        System.out.println("La cotizacion para " + cantidad + " son " + resultado.conversion_rate());
+        System.out.println("La cotizacion para " + cantidad + " de " + monedaIncial +  " son " + resultado.conversion_rate() + " " + monedaFinal);
 
 
     }
