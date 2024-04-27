@@ -6,6 +6,7 @@ public class Main {
         boolean salida = true;
         var moneda = new BuscarMoneda();
         var lista = new ListaDeMonedas();
+
         conexionApi conexion = new conexionApi();
 
         Scanner leer = new Scanner(System.in);
@@ -14,12 +15,13 @@ public class Main {
         do {
 
             System.out.println("ingrese cantidad de dinero a convertir");
-            int cantidad = leer.nextInt();
+            Double cantidad = leer.nextDouble();
             System.out.println("Paises disponibles");
             lista.listar();
 
             System.out.println("de que pais es la moneda?");
             String inicial = lista.nombreYmonedas(leer.next());
+
 
             System.out.println("a la moneda de que pais quiere convertir?");
             String destino = lista.nombreYmonedas(leer.next());

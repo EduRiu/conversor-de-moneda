@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 
 public class conexionApi {
 
-    public modeloMoneda cotizar(String monedaInicial, String monedaDestino, int cantidad) {
+    public modeloMoneda cotizar(String monedaInicial, String monedaDestino, Double cantidad) {
 
         String API = "c3a1ea0f643cce461e34158d";
         URI direccion = URI.create("https://v6.exchangerate-api.com/v6/" + API + "/pair/" + monedaInicial + "/" + monedaDestino + "/" + cantidad);
